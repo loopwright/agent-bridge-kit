@@ -1,0 +1,17 @@
+[Unit]
+Description=AI Agent Bridge
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=/home/user/agent
+ExecStart=/home/user/agent/venv/bin/python bridge.py
+Restart=on-failure
+RestartSec=10
+WatchdogSec=60
+StartLimitBurst=3
+StartLimitIntervalSec=300
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=default.target
